@@ -1,0 +1,19 @@
+﻿@model List<User>
+
+<h1>Users</h1>
+
+@{
+	if (Model != null && Model.Count > 0)
+	{
+		<ul>
+		foreach (var user in Model)
+		{
+			<li>user.Name: user.Username</li>
+		}
+		</ul>
+	}
+	else
+	{
+		<p>No users to display.</p>
+	}
+}
