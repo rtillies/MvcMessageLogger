@@ -32,5 +32,12 @@ namespace MvcMessageLogger.Controllers
 
 			return RedirectToAction("Index");
 		}
+
+		[Route("users/{id:int}")]
+		public IActionResult Show(int id)
+		{
+			var user = _context.Users.Find(id);
+			return View(user);
+		}
 	}
 }
