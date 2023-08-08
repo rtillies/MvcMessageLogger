@@ -6,9 +6,9 @@
 	if (Model != null && Model.Count > 0)
 	{
 		<ul>
-		foreach (var user in Model)
+		@foreach (var user in Model)
 		{
-			<li>user.Name: user.Username</li>
+			<li>@user.Name: <a href="/users/Model.id">@user.Username</a></li>
 		}
 		</ul>
 	}
@@ -16,4 +16,7 @@
 	{
 		<p>No users to display.</p>
 	}
+
+	<p><a href="/users/new">Add User</a></p>
+
 }
