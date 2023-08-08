@@ -17,11 +17,7 @@ namespace MvcMessageLogger.Controllers
 		public IActionResult Index()
 		{
 			var users = _context.Users.Include(u => u.Messages).ToList();
-				//.Include(u => u.Messages);
 			return View(users);
-
-            //var bags = _context.GolfBags.Include(b => b.Clubs).ToList();
-
         }
 
         public IActionResult New()
@@ -41,16 +37,11 @@ namespace MvcMessageLogger.Controllers
 		[Route("users/{id:int}")]
 		public IActionResult Show(int id)
 		{
-			//var user = _context.Users.Find(id);
-
 			var user = _context.Users
 				.Include(u => u.Messages)
 				.Where(u => u.Id == id)
 				.First();
 			return View(user);
-
-            //var bag = _context.GolfBags.Include(b => b.Clubs).Where(b => b.Id == id).First();
-
         }
     }
 }

@@ -47,7 +47,6 @@ namespace MvcMessageLogger.Controllers
             user.Messages.Add(message);
             _context.SaveChanges();
 
-            //return RedirectToAction("index", new { userId = user.Id });
             return Redirect($"/users/{user.Id}");
         }
 

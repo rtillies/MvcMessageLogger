@@ -10,12 +10,11 @@
 		<ul>
 			@foreach (var message in Model.Messages)
 			{
-				<li>@message.Content<br /><span style="font-size:0.9em; color:gray">@message.CreatedAt</span>
-
-				<br />
-
-				<br />
-
+				<li>
+					@message.Content<br />
+					<span style="font-size:0.9em; color:gray">@message.CreatedAt</span>
+					<br />
+					<br />
 				</li>
 			}
 		</ul>
@@ -27,5 +26,4 @@
 
 	<p><a href="/users/@Model.Id/messages/new">Add Message</a></p>
 	<p><a href="/users/">Return to Users</a></p>
-
 }
