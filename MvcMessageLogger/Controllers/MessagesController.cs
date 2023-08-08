@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MvcMessageLogger.DataAccess;
+using MvcMessageLogger.Models;
 
 namespace MvcMessageLogger.Controllers
 {
@@ -34,5 +35,21 @@ namespace MvcMessageLogger.Controllers
 
             return View(user);
         }
+
+        [HttpPost]
+        [Route("users/{userId:int}")]
+        public IActionResult Index(int userId, Message message)
+        {
+            var user = _context.Users
+                .Where(u => u.Id == userId)
+                .Include(u => u.Messages)
+                .First();
+            user.Messages.Add(message);
+            _context.SaveChanges();
+
+            //return RedirectToAction("index", new { userId = user.Id });
+            return Redirect($"/users/{user.Id}");
+        }
+
     }
 }

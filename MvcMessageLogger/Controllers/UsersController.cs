@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using MvcMessageLogger.DataAccess;
 using MvcMessageLogger.Models;
 
@@ -15,11 +16,15 @@ namespace MvcMessageLogger.Controllers
 
 		public IActionResult Index()
 		{
-			var users = _context.Users.ToList();
+			var users = _context.Users.Include(u => u.Messages).ToList();
+				//.Include(u => u.Messages);
 			return View(users);
-		}
 
-		public IActionResult New()
+            //var bags = _context.GolfBags.Include(b => b.Clubs).ToList();
+
+        }
+
+        public IActionResult New()
 		{
 			return View();
 		}
@@ -36,8 +41,16 @@ namespace MvcMessageLogger.Controllers
 		[Route("users/{id:int}")]
 		public IActionResult Show(int id)
 		{
-			var user = _context.Users.Find(id);
+			//var user = _context.Users.Find(id);
+
+			var user = _context.Users
+				.Include(u => u.Messages)
+				.Where(u => u.Id == id)
+				.First();
 			return View(user);
-		}
-	}
+
+            //var bag = _context.GolfBags.Include(b => b.Clubs).Where(b => b.Id == id).First();
+
+        }
+    }
 }

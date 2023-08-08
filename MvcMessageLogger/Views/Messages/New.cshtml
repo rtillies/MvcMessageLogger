@@ -9,14 +9,9 @@
 
 <form method="post" action="/users/@Model.Id">
     <div class="form-group">
-        <label for="Context">Type your message:</label>
-        <input type="text" id="Context" name="Context" />
+        <label for="Content">Type your message:</label><br />
+        <textarea id="Content" name="Content" rows="4" cols="50"></textarea>
     </div>
-    <div class="form-group">
-        <label for="CreatedAt">Username:</label>
-        <input type="datetime" id="CreatedAt" name="CreatedAt" value="@currentTime" disabled />
-    </div>
-    <p>@currentTime</p>
     <button type="submit">Add Message</button>
     <button type="reset" value="Reset">Reset</button>
 

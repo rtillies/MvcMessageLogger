@@ -10,7 +10,13 @@
 		<ul>
 			@foreach (var message in Model.Messages)
 			{
-				<li>@message.Content<br>@message.CreatedAt</li>
+				<li>@message.Content<br /><span style="font-size:0.9em; color:gray">@message.CreatedAt</span>
+
+				<br />
+
+				<br />
+
+				</li>
 			}
 		</ul>
 	}
