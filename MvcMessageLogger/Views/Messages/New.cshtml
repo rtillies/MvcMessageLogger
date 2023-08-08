@@ -1,0 +1,19 @@
+﻿@{
+    @model User
+}
+
+<h1>Add Message</h1>
+<p>@Model.Name | <b>@Model.Username</b></p>
+<p></p>
+
+<form method="post" action="/users/@Model.Id">
+    <div class="form-group">
+        <label for="Content">Type your message:</label><br />
+        <textarea id="Content" name="Content" rows="4" cols="50"></textarea>
+    </div>
+    <button type="submit">Add Message</button>
+    <button type="reset" value="Reset">Reset</button>
+
+    <p><a href="/users">Return to Users</a></p>
+</form>
+
