@@ -1,0 +1,25 @@
+﻿@{
+    @model User
+    var currentTime = DateTime.Now.ToUniversalTime();
+}
+
+<h1>Add Message</h1>
+<p>@Model.Name | <b>@Model.Username</b></p>
+<p></p>
+
+<form method="post" action="/users/@Model.Id">
+    <div class="form-group">
+        <label for="Context">Type your message:</label>
+        <input type="text" id="Context" name="Context" />
+    </div>
+    <div class="form-group">
+        <label for="CreatedAt">Username:</label>
+        <input type="datetime" id="CreatedAt" name="CreatedAt" value="@currentTime" disabled />
+    </div>
+    <p>@currentTime</p>
+    <button type="submit">Add Message</button>
+    <button type="reset" value="Reset">Reset</button>
+
+    <p><a href="/users">Return to Users</a></p>
+</form>
+
