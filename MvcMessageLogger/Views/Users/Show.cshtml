@@ -1,0 +1,25 @@
+﻿@model User
+
+<h1>@Model.Name</h1>
+
+@{
+	<p>Username: <b>@Model.Username</b></p>
+
+	if (Model != null && Model.Messages.Count > 0)
+	{
+		<ul>
+			@foreach (var message in Model.Messages)
+			{
+				<li>@message.Content<br>@message.CreatedAt</li>
+			}
+		</ul>
+	}
+	else
+	{
+		<p>No messages to display.</p>
+	}
+
+	<p><a href="/messages/new">Add Message</a></p>
+	<p><a href="/users/">Return to Users</a></p>
+
+}

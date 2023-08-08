@@ -1,0 +1,22 @@
+﻿@model List<User>
+
+<h1>Users</h1>
+
+@{
+	if (Model != null && Model.Count > 0)
+	{
+		<ul>
+		@foreach (var user in Model)
+		{
+			<li>@user.Name: <a href="/users/@user.Id">@user.Username</a></li>
+		}
+		</ul>
+	}
+	else
+	{
+		<p>No users to display.</p>
+	}
+
+	<p><a href="/users/new">Add User</a></p>
+
+}
